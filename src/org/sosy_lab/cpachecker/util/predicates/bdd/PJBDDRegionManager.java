@@ -415,6 +415,12 @@ public class PJBDDRegionManager implements RegionManager {
             "Size of the BDD cache in relation to the node table size (set to 0 to use fixed BDD cache size).")
     private double cacheRatio = 0.1;
 
+    @Option(
+        secure = true,
+        description =
+            "Use Chained-BDDs.")
+    private boolean useChained = false;
+
     private BDDBuilder builder;
 
     private BuildFromConfig(Configuration pConfig) throws InvalidConfigurationException {
@@ -448,7 +454,8 @@ public class PJBDDRegionManager implements RegionManager {
           .setSelectedCacheSize(cacheSize)
           .setThreads(threads)
           .setTableSize(initTableSize)
-          .setIncreaseFactor(increaseFactor);
+          .setIncreaseFactor(increaseFactor)
+          .setUseChained(useChained);
       if (threads == 1) {
         pBuilder.setParallelizationType(ParallelizationType.NONE);
       }
