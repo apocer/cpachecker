@@ -457,7 +457,9 @@ public class PJBDDRegionManager implements RegionManager {
           .setIncreaseFactor(increaseFactor)
           .setUseChained(useChained);
       if (threads == 1) {
-        pBuilder.setParallelizationType(ParallelizationType.NONE);
+        pBuilder
+          .setParallelizationType(ParallelizationType.NONE)
+          .setUseChained(useChained);
       }
     }
   }
